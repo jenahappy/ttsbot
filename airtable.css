@@ -1,0 +1,321 @@
+/* =========================================================================
+   Airtable Design System — CSS
+   출처: DESIGN-airtable.md (getdesign.md / Airtable 분석, version: alpha)
+   "흰 캔버스 + 다크 잉크 타입" 위에 코럴/포레스트/다크네이비 시그니처 카드로
+   브랜드 전압을 주는 에디토리얼 워크플로우 UI. CTA는 near-black 솔리드.
+   모든 값은 DESIGN.md 사양 그대로입니다.
+   ========================================================================= */
+
+:root {
+  /* ---- Colors : Brand & Accent ---- */
+  --color-primary: #181d26;          /* near-black, 기본 브랜드/CTA 배경 */
+  --color-primary-active: #0d1218;   /* primary 버튼 press 상태 */
+  --color-ink: #181d26;              /* 가장 강한 텍스트(=primary 역할) */
+  --color-body: #333840;             /* 본문 기본 텍스트 */
+  --color-muted: #41454d;            /* 푸터 링크, 브레드크럼, 캡션 */
+  --color-hairline: #dddddd;         /* 1px 보더(인풋/구분선/세컨더리 외곽) */
+  --color-border-strong: #9297a0;    /* 비활성 세컨더리 버튼 외곽 */
+
+  /* ---- Colors : Surface ---- */
+  --color-canvas: #ffffff;           /* 기본 페이지 바닥 */
+  --color-surface-soft: #f8fafc;     /* 탭 피처 카드, 추천 요금제 */
+  --color-surface-strong: #e0e2e6;   /* 푸터 근처 라이트그레이 CTA 밴드 */
+  --color-surface-dark: #181d26;     /* 다크 네이비 CTA 카드 */
+  --color-surface-dark-elevated: #1d1f25; /* 아티클 히어로 베이스 */
+
+  /* ---- Colors : Signature Card Surfaces (브랜드 전압) ---- */
+  --color-signature-coral: #aa2d00;  /* 다크 코럴/옥사이드 레드 */
+  --color-signature-forest: #0a2e0e; /* 딥 그린 */
+  --color-signature-cream: #f5e9d4;  /* 크림 콜아웃 밴드 */
+  --color-signature-peach: #fcab79;
+  --color-signature-mint: #a8d8c4;
+  --color-signature-yellow: #f4d35e;
+  --color-signature-mustard: #d9a441;
+
+  /* ---- Colors : On-surface ---- */
+  --color-on-primary: #ffffff;
+  --color-on-dark: #ffffff;
+
+  /* ---- Colors : Semantic ---- */
+  --color-link: #1b61c9;             /* 인라인 링크 (CTA 색 아님!) */
+  --color-link-active: #1a3866;
+  --color-info: #254fad;
+  --color-info-border: #458fff;      /* 포커스 인풋 외곽 */
+  --color-success: #006400;
+  --color-success-border: #39bf45;
+  --color-pricing-ink: #1d1f25;
+
+  /* ---- Typography : Font families ----
+     Haas/Haas Groot Disp 미보유 시 Inter Display 가 가장 근접한 대체.
+     macOS=system-ui, Windows=Segoe UI 로 폴백. */
+  --font-display: "Haas Groot Disp", "Haas", "Inter Display",
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --font-text: "Haas", "Inter Display",
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --font-pricing: "Inter Display", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* ---- Typography : Scale (size / weight / line-height / letter-spacing) ---- */
+  --fs-display-xl: 48px;     --fw-display-xl: 500;  --lh-display-xl: 1.1;   --ls-display-xl: 0;
+  --fs-display-lg: 40px;     --fw-display-lg: 400;  --lh-display-lg: 1.2;   --ls-display-lg: 0;
+  --fs-display-md: 32px;     --fw-display-md: 400;  --lh-display-md: 1.2;   --ls-display-md: 0;
+  --fs-title-lg: 24px;       --fw-title-lg: 400;    --lh-title-lg: 1.35;    --ls-title-lg: 0.12px;
+  --fs-title-md: 20px;       --fw-title-md: 400;    --lh-title-md: 1.5;     --ls-title-md: 0;
+  --fs-title-sm: 18px;       --fw-title-sm: 500;    --lh-title-sm: 1.4;     --ls-title-sm: 0;
+  --fs-label-md: 16px;       --fw-label-md: 500;    --lh-label-md: 1.4;     --ls-label-md: 0;
+  --fs-button: 16px;         --fw-button: 500;      --lh-button: 1.4;       --ls-button: 0;
+  --fs-body-md: 14px;        --fw-body-md: 400;     --lh-body-md: 1.25;     --ls-body-md: 0;
+  --fs-caption: 14px;        --fw-caption: 500;     --lh-caption: 1.35;     --ls-caption: 0.16px;
+  --fs-legal: 13.12px;       --fw-legal: 600;       --lh-legal: 1.2;        --ls-legal: 0;
+  --fs-pricing-display: 44.8px;     --fw-pricing-display: 475;     --lh-pricing-display: 1.1;
+  --fs-pricing-section: 28px;       --fw-pricing-section: 475;     --lh-pricing-section: 1.2;
+  --fs-pricing-card-title: 20px;    --fw-pricing-card-title: 475;  --lh-pricing-card-title: 1.3;
+
+  /* ---- Radius ---- */
+  --radius-xs: 2px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-pill: 9999px;
+  --radius-full: 9999px;
+
+  /* ---- Spacing (base unit 4px) ---- */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-section: 96px;
+
+  /* ---- Layout ---- */
+  --container-max: 1280px;
+  --container-pad: var(--space-xxl); /* 48px 좌우 여백 */
+  --nav-height: 64px;
+
+  /* ---- Elevation ----
+     색-블록 우선, 그림자는 최소. primary 버튼에만 옅은 블루틴트 글로우. */
+  --shadow-button-rest: 0 1px 2px rgba(24, 29, 38, 0.18),
+                        0 0 0 0 rgba(27, 97, 201, 0.0);
+  --focus-ring: 0 0 0 2px rgba(27, 97, 201, 0.55); /* 키보드 포커스 블루 링 */
+}
+
+/* =========================================================================
+   Base
+   ========================================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--color-canvas);
+  color: var(--color-body);
+  font-family: var(--font-text);
+  font-size: var(--fs-body-md);
+  font-weight: var(--fw-body-md);
+  line-height: var(--lh-body-md);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 { margin: 0; color: var(--color-ink); font-family: var(--font-display); }
+
+a { color: var(--color-link); text-decoration: none; }
+a:active { color: var(--color-link-active); }
+
+/* =========================================================================
+   Typography utilities
+   ========================================================================= */
+.t-display-xl { font-family: var(--font-display); font-size: var(--fs-display-xl); font-weight: var(--fw-display-xl); line-height: var(--lh-display-xl); letter-spacing: var(--ls-display-xl); color: var(--color-ink); }
+.t-display-lg { font-family: var(--font-display); font-size: var(--fs-display-lg); font-weight: var(--fw-display-lg); line-height: var(--lh-display-lg); letter-spacing: var(--ls-display-lg); color: var(--color-ink); }
+.t-display-md { font-family: var(--font-display); font-size: var(--fs-display-md); font-weight: var(--fw-display-md); line-height: var(--lh-display-md); letter-spacing: var(--ls-display-md); color: var(--color-ink); }
+.t-title-lg  { font-family: var(--font-display); font-size: var(--fs-title-lg);  font-weight: var(--fw-title-lg);  line-height: var(--lh-title-lg);  letter-spacing: var(--ls-title-lg); }
+.t-title-md  { font-family: var(--font-display); font-size: var(--fs-title-md);  font-weight: var(--fw-title-md);  line-height: var(--lh-title-md); }
+.t-title-sm  { font-family: var(--font-text);    font-size: var(--fs-title-sm);  font-weight: var(--fw-title-sm);  line-height: var(--lh-title-sm); }
+.t-label-md  { font-family: var(--font-text);    font-size: var(--fs-label-md);  font-weight: var(--fw-label-md);  line-height: var(--lh-label-md); }
+.t-body-md   { font-family: var(--font-text);    font-size: var(--fs-body-md);   font-weight: var(--fw-body-md);   line-height: var(--lh-body-md); color: var(--color-body); }
+.t-caption   { font-family: var(--font-text);    font-size: var(--fs-caption);   font-weight: var(--fw-caption);   line-height: var(--lh-caption); letter-spacing: var(--ls-caption); color: var(--color-muted); }
+.t-legal     { font-family: var(--font-text);    font-size: var(--fs-legal);     font-weight: var(--fw-legal);     line-height: var(--lh-legal); }
+
+/* =========================================================================
+   Layout helpers
+   ========================================================================= */
+.container { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--container-pad); }
+.section   { padding-block: var(--space-section); } /* 96px 상하 — 보편 수직 리듬 */
+.stack-md > * + * { margin-top: var(--space-md); }
+.stack-lg > * + * { margin-top: var(--space-lg); }
+
+/* =========================================================================
+   Components — Buttons
+   ========================================================================= */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-text);
+  font-size: var(--fs-button); font-weight: var(--fw-button);
+  line-height: var(--lh-button); letter-spacing: var(--ls-button);
+  border: 1px solid transparent; cursor: pointer; text-decoration: none;
+  transition: background-color .12s ease, box-shadow .12s ease;
+}
+
+/* button-primary — 시그니처 near-black CTA. 뷰포트당 1개 권장. */
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md) var(--space-lg); /* 16px 24px */
+  box-shadow: var(--shadow-button-rest);
+}
+.btn-primary:active { background: var(--color-primary-active); }
+.btn-primary:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+/* button-secondary — 흰 배경 + hairline 외곽. primary 와 한 쌍. */
+.btn-secondary {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md) var(--space-lg);
+  border: 1px solid var(--color-hairline);
+}
+.btn-secondary:disabled { border-color: var(--color-border-strong); color: var(--color-border-strong); cursor: default; }
+
+/* 다크 시그니처 표면 위에서도 흰 버튼 유지(반투명 인버트 안 함) */
+.btn-secondary-on-dark { background: var(--color-canvas); color: var(--color-ink); border-radius: var(--radius-lg); padding: var(--space-md) var(--space-lg); border: 1px solid var(--color-canvas); }
+
+/* button-pricing-pill — 요금제 서브시스템 전용 알약 버튼 */
+.btn-pricing-pill {
+  background: var(--color-canvas);
+  color: var(--color-pricing-ink);
+  border-radius: var(--radius-pill);
+  padding: var(--space-sm) var(--space-lg); /* 12px 24px */
+  border: 1px solid var(--color-hairline);
+}
+
+/* button-legal — 쿠키/약관 배너 CTA */
+.btn-legal {
+  background: var(--color-link);
+  color: var(--color-on-primary);
+  font-size: var(--fs-legal); font-weight: var(--fw-legal); line-height: var(--lh-legal);
+  border-radius: var(--radius-xs);
+  padding: var(--space-sm) 10px; /* 12px 10px */
+}
+
+/* button-icon-circular — 40x40 원형 아이콘 버튼 */
+.btn-icon-circular {
+  width: 40px; height: 40px; padding: 0;
+  background: var(--color-canvas); color: var(--color-ink);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-full);
+}
+
+/* text-link — 인라인 링크 (밑줄 없음) */
+.text-link { background: transparent; color: var(--color-link); font: var(--fw-body-md) var(--fs-body-md)/var(--lh-body-md) var(--font-text); }
+
+/* =========================================================================
+   Components — Navigation
+   ========================================================================= */
+.top-nav {
+  height: var(--nav-height);
+  display: flex; align-items: center; gap: var(--space-lg);
+  background: var(--color-canvas); color: var(--color-ink);
+  font-size: var(--fs-body-md);
+  padding-inline: var(--container-pad);
+  /* 항상 라이트 — 다크 섹션 위에서도 인버트하지 않음 */
+}
+.top-nav .nav-menu { display: flex; gap: var(--space-lg); }
+.top-nav .nav-right { margin-left: auto; display: flex; align-items: center; gap: var(--space-md); }
+
+/* =========================================================================
+   Components — Hero & Cards
+   ========================================================================= */
+/* hero-band — 흰 캔버스 히어로. 그라데이션/메시 없음. 96px 여백. */
+.hero-band {
+  background: var(--color-canvas); color: var(--color-ink);
+  padding-block: var(--space-section); text-align: left;
+}
+.hero-band .hero-title { font-family: var(--font-display); font-size: var(--fs-display-lg); font-weight: var(--fw-display-lg); line-height: var(--lh-display-lg); }
+.hero-band .hero-actions { display: flex; gap: var(--space-md); margin-top: var(--space-lg); }
+
+/* 시그니처 카드 공통 (전면 풀블리드, 그림자 없음 — 색 대비로 깊이) */
+.signature-card { border-radius: var(--radius-lg); padding: var(--space-xxl); /* 48px */ }
+/* color: inherit — 다크 카드 위에서 카드 컨테이너의 흰색을 그대로 상속(전역 h2 ink 규칙 덮어씀) */
+.signature-card .card-title { font-family: var(--font-display); font-size: var(--fs-display-md); font-weight: var(--fw-display-md); line-height: var(--lh-display-md); color: inherit; }
+
+.signature-coral-card  { background: var(--color-signature-coral);  color: var(--color-on-primary); }
+.signature-forest-card { background: var(--color-signature-forest); color: var(--color-on-primary); }
+.hero-card-dark        { background: var(--color-surface-dark);     color: var(--color-on-dark); }
+
+/* feature-card-tabbed — surface-soft, 32px 패딩 */
+.feature-card-tabbed { background: var(--color-surface-soft); color: var(--color-ink); border-radius: var(--radius-lg); padding: var(--space-xl); }
+
+/* cream-callout-card — 크림 콜아웃, 10px 반경, 24px 패딩 */
+.cream-callout-card { background: var(--color-signature-cream); color: var(--color-ink); border-radius: var(--radius-md); padding: var(--space-lg); }
+
+/* demo-grid-card — 제품 UI 조각 카드. 높이 의도적 불균일 권장. */
+.demo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
+.demo-grid-card { background: var(--color-canvas); color: var(--color-ink); border-radius: var(--radius-md); padding: var(--space-md); border: 1px solid var(--color-hairline); }
+.demo-grid-card.is-peach   { background: var(--color-signature-peach);   border-color: transparent; }
+.demo-grid-card.is-mint    { background: var(--color-signature-mint);    border-color: transparent; }
+.demo-grid-card.is-yellow  { background: var(--color-signature-yellow);  border-color: transparent; }
+.demo-grid-card.is-mustard { background: var(--color-signature-mustard); border-color: transparent; }
+
+/* logo-strip / article-card / topic-filter-rail */
+.logo-strip { background: var(--color-canvas); color: var(--color-muted); padding-block: var(--space-xl); display: flex; gap: var(--space-xl); align-items: center; flex-wrap: wrap; }
+.article-card { background: var(--color-canvas); color: var(--color-ink); border-radius: var(--radius-md); padding: var(--space-md); border: 1px solid var(--color-hairline); }
+.topic-filter-rail { width: 240px; background: var(--color-canvas); color: var(--color-body); font-size: var(--fs-body-md); }
+
+/* cta-band-light — 라이트그레이 CTA 스트립 */
+.cta-band-light { background: var(--color-surface-strong); color: var(--color-ink); border-radius: var(--radius-lg); padding: var(--space-xxl); }
+
+/* footer */
+.footer { background: var(--color-canvas); color: var(--color-body); font-size: var(--fs-body-md); padding-block: 64px; }
+
+/* =========================================================================
+   Components — Inputs
+   ========================================================================= */
+.text-input {
+  background: var(--color-canvas); color: var(--color-ink);
+  font-family: var(--font-text); font-size: var(--fs-body-md); line-height: var(--lh-body-md);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md); /* 12px 16px */
+  height: 44px; width: 100%;
+}
+.text-input:focus { outline: none; border-color: var(--color-info-border); box-shadow: 0 0 0 1px var(--color-info-border); }
+
+/* =========================================================================
+   Components — Pricing sub-system (Inter Display)
+   ========================================================================= */
+.pricing { font-family: var(--font-pricing); }
+.pricing-h1      { font-family: var(--font-pricing); font-size: var(--fs-pricing-display); font-weight: var(--fw-pricing-display); line-height: var(--lh-pricing-display); color: var(--color-pricing-ink); }
+.pricing-section-head { font-family: var(--font-pricing); font-size: var(--fs-pricing-section); font-weight: var(--fw-pricing-section); line-height: var(--lh-pricing-section); color: var(--color-pricing-ink); }
+
+.pricing-tier-card {
+  background: var(--color-canvas); color: var(--color-pricing-ink);
+  border-radius: var(--radius-md); padding: var(--space-xl);
+  border: 1px solid var(--color-hairline);
+}
+.pricing-tier-card .plan-name { font-family: var(--font-pricing); font-size: var(--fs-pricing-card-title); font-weight: var(--fw-pricing-card-title); line-height: var(--lh-pricing-card-title); }
+.pricing-tier-card .plan-price { font-family: var(--font-pricing); font-size: var(--fs-pricing-display); font-weight: var(--fw-pricing-display); line-height: var(--lh-pricing-display); }
+.pricing-tier-card-featured { background: var(--color-surface-soft); } /* 배경 톤만으로 추천 표시 */
+.pricing-comparison-row { padding: var(--space-sm); border-bottom: 1px solid var(--color-hairline); color: var(--color-body); font-size: var(--fs-body-md); }
+
+/* =========================================================================
+   Semantic badges
+   ========================================================================= */
+.badge-info    { color: var(--color-info);    border: 1px solid var(--color-info-border);    border-radius: var(--radius-sm); padding: 2px 8px; font-size: var(--fs-caption); }
+.badge-success { color: var(--color-success); border: 1px solid var(--color-success-border); border-radius: var(--radius-sm); padding: 2px 8px; font-size: var(--fs-caption); }
+
+/* =========================================================================
+   Responsive — breakpoints from spec
+   ========================================================================= */
+@media (max-width: 1024px) { /* tablet */
+  .demo-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {  /* mobile */
+  .demo-grid { grid-template-columns: 1fr; }
+  .top-nav .nav-menu { display: none; } /* 햄버거로 collapse */
+  :root { --container-pad: var(--space-lg); }
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Airtable Design System — CSS 데모</title>
+<link rel="stylesheet" href="airtable.css">
+<style>
+  /* 데모 전용 보조 스타일 (디자인 토큰 사용) */
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: var(--space-md); }
+  .swatch { border-radius: var(--radius-md); border: 1px solid var(--color-hairline); overflow: hidden; }
+  .swatch .chip { height: 64px; }
+  .swatch .meta { padding: var(--space-xs) var(--space-sm); }
+  .swatch .meta b { display:block; font-size: var(--fs-caption); color: var(--color-ink); }
+  .swatch .meta span { font-size: var(--fs-legal); color: var(--color-muted); }
+  .label { font-size: var(--fs-caption); color: var(--color-muted); letter-spacing: var(--ls-caption); text-transform: uppercase; }
+  .row { display:flex; gap: var(--space-md); flex-wrap: wrap; align-items: center; }
+  .grid-3 { display:grid; grid-template-columns: repeat(3,1fr); gap: var(--space-lg); }
+  hr { border: none; border-top: 1px solid var(--color-hairline); margin: 0; }
+</style>
+</head>
+<body>
+
+<!-- top nav -->
+<nav class="top-nav">
+  <strong style="font-family:var(--font-display)">Airtable</strong>
+  <span class="nav-menu">
+    <a href="#">Platform</a><a href="#">Solutions</a><a href="#">Resources</a>
+    <a href="#">Enterprise</a><a href="#">Pricing</a>
+  </span>
+  <span class="nav-right">
+    <a class="btn btn-secondary" href="#">Book demo</a>
+    <a class="btn btn-primary" href="#">Sign up for free</a>
+    <a class="text-link" href="#">Log In</a>
+  </span>
+</nav>
+<hr>
+
+<!-- hero -->
+<section class="hero-band container">
+  <h1 class="hero-title">Production apps at<br>prototype speed.</h1>
+  <p class="t-body-md" style="max-width:560px;margin-top:var(--space-md)">
+    흰 캔버스 위 다크 잉크 타입과 넉넉한 여백. 브랜드 전압은 시그니처 카드에서 나옵니다.
+  </p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="#">Get started for free</a>
+    <a class="btn btn-secondary" href="#">Book demo</a>
+  </div>
+</section>
+
+<!-- color swatches -->
+<section class="container section">
+  <p class="label">Colors</p>
+  <div class="swatches" style="margin-top:var(--space-md)">
+    <div class="swatch"><div class="chip" style="background:var(--color-primary)"></div><div class="meta"><b>primary</b><span>#181d26</span></div></div>
+    <div class="swatch"><div class="chip" style="background:var(--color-signature-coral)"></div><div class="meta"><b>signature-coral</b><span>#aa2d00</span></div></div>
+    <div class="swatch"><div class="chip" style="background:var(--color-signature-forest)"></div><div class="meta"><b>signature-forest</b><span>#0a2e0e</span></div></div>
+    <div class="swatch"><div class="chip" style="background:var(--color-signature-cream)"></div><div class="meta"><b>signature-cream</b><span>#f5e9d4</span></div></div>
+    <div class="swatch"><div class="chip" style="background:var(--color-signature-peach)"></div><div class="meta"><b>peach</b><span>#fcab79</span></div></div>
+    <div class="swatch"><div class="chip" style="background:var(--color-signature-mint)"></div><div class="meta"><b>mint</b><span>#a8d8c4</span></div></div>
+    <div class="swatch"><div class="chip" style="background:var(--color-signature-yellow)"></div><div class="meta"><b>yellow</b><span>#f4d35e</span></div></div>
+    <div class="swatch"><div class="chip" style="background:var(--color-signature-mustard)"></div><div class="meta"><b>mustard</b><span>#d9a441</span></div></div>
+    <div class="swatch"><div class="chip" style="background:var(--color-surface-strong)"></div><div class="meta"><b>surface-strong</b><span>#e0e2e6</span></div></div>
+    <div class="swatch"><div class="chip" style="background:var(--color-link)"></div><div class="meta"><b>link</b><span>#1b61c9</span></div></div>
+  </div>
+</section>
+<hr>
+
+<!-- buttons -->
+<section class="container section">
+  <p class="label">Buttons</p>
+  <div class="row" style="margin-top:var(--space-md)">
+    <button class="btn btn-primary">Primary</button>
+    <button class="btn btn-secondary">Secondary</button>
+    <button class="btn btn-secondary" disabled>Disabled</button>
+    <button class="btn btn-pricing-pill">Pricing pill</button>
+    <button class="btn btn-legal">Accept cookies</button>
+    <button class="btn-icon-circular" aria-label="next">→</button>
+  </div>
+</section>
+<hr>
+
+<!-- signature cards -->
+<section class="container section">
+  <p class="label">Signature cards</p>
+  <div class="grid-3" style="margin-top:var(--space-md)">
+    <div class="signature-card signature-coral-card">
+      <h2 class="card-title">Build faster</h2>
+      <p class="t-body-md" style="color:#fff;opacity:.9">코럴 시그니처 카드 — 풀블리드 색면.</p>
+      <a class="btn btn-secondary-on-dark" href="#" style="margin-top:var(--space-md)">Learn more</a>
+    </div>
+    <div class="signature-card signature-forest-card">
+      <h2 class="card-title">Stay aligned</h2>
+      <p class="t-body-md" style="color:#fff;opacity:.9">포레스트 시그니처 카드.</p>
+    </div>
+    <div class="signature-card hero-card-dark">
+      <h2 class="card-title">10× everyone</h2>
+      <p class="t-body-md" style="color:#fff;opacity:.9">다크 네이비 CTA 카드.</p>
+    </div>
+  </div>
+  <div class="cream-callout-card" style="margin-top:var(--space-lg)">
+    <h3 class="t-title-lg">The path to 10× every person in your organization</h3>
+  </div>
+</section>
+<hr>
+
+<!-- demo grid -->
+<section class="container section">
+  <p class="label">Demo grid (warm pastel surfaces)</p>
+  <div class="demo-grid" style="margin-top:var(--space-md)">
+    <div class="demo-grid-card is-peach"><span class="t-label-md">Records</span></div>
+    <div class="demo-grid-card is-mint"><span class="t-label-md">Automations</span></div>
+    <div class="demo-grid-card is-yellow"><span class="t-label-md">Interfaces</span></div>
+    <div class="demo-grid-card is-mustard"><span class="t-label-md">AI</span></div>
+    <div class="demo-grid-card"><span class="t-label-md">Sync</span></div>
+    <div class="demo-grid-card"><span class="t-label-md">Reporting</span></div>
+  </div>
+</section>
+<hr>
+
+<!-- inputs + typography -->
+<section class="container section grid-3">
+  <div>
+    <p class="label">Input</p>
+    <input class="text-input" placeholder="이메일 주소" style="margin-top:var(--space-sm)">
+    <div style="margin-top:var(--space-sm)" class="row">
+      <span class="badge-info">info</span><span class="badge-success">success</span>
+    </div>
+  </div>
+  <div>
+    <p class="label">Type scale</p>
+    <div class="stack-md" style="margin-top:var(--space-sm)">
+      <div class="t-display-md">Display MD 32</div>
+      <div class="t-title-lg">Title LG 24</div>
+      <div class="t-body-md">Body 14 — Haas grotesk 폴백</div>
+    </div>
+  </div>
+  <div>
+    <p class="label">Pricing dialect (Inter Display)</p>
+    <div class="pricing pricing-tier-card pricing-tier-card-featured" style="margin-top:var(--space-sm)">
+      <div class="plan-name">Team</div>
+      <div class="plan-price">$20</div>
+      <a class="btn btn-pricing-pill" href="#" style="margin-top:var(--space-md)">Choose Team</a>
+    </div>
+  </div>
+</section>
+
+<!-- cta band + footer -->
+<section class="container" style="padding-bottom:var(--space-section)">
+  <div class="cta-band-light">
+    <h2 class="t-display-md">Start building with Airtable</h2>
+    <a class="btn btn-primary" href="#" style="margin-top:var(--space-md)">Sign up for free</a>
+  </div>
+</section>
+<hr>
+<footer class="footer container">
+  <span class="t-body-md" style="color:var(--color-muted)">© Airtable design tokens — DESIGN.md 기반 데모</span>
+</footer>
+
+</body>
+</html>
